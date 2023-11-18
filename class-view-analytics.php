@@ -168,14 +168,14 @@ abstract class AcrossWP_Update_Component {
 	}
 
 	public function update_option( $update_running ) {
-		update_option( $this->key, $update_running );
+		update_option( $this->$key, $update_running );
 	}
 
 	public function get_option() {
-		return get_option( $this->key, false );
+		return get_option( $this->$key, false );
 	}
 
 	public function schedule_actions() {
-		as_schedule_single_action( strtotime( '+1 minutes' ), $this->key, array(), 'view_analytics', true );
+		as_schedule_single_action( strtotime( '+1 minutes' ), $this->$key, array(), 'view_analytics', true );
 	}
 }
