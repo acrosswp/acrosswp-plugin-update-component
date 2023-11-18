@@ -176,6 +176,6 @@ abstract class AcrossWP_Update_Component {
 	}
 
 	public function schedule_actions() {
-		as_schedule_single_action( strtotime( '+1 minutes' ), $this->key, array(), '', true );
+		as_schedule_single_action( strtotime( '+1 minutes' ), $this->key, array(), 'view_analytics', true );
 	}
 }
