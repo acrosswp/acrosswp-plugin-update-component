@@ -2,7 +2,7 @@
 /**
  * View Analytics.
  *
- * @package View_Analytics\Updater
+ * @package AcrossWP\Updater
  * @since View Analytics 1.0.0
  */
 
@@ -16,11 +16,11 @@ defined( 'ABSPATH' ) || exit;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    View_Analytics
- * @subpackage View_Analytics/Updater
+ * @package    AcrossWP
+ * @subpackage AcrossWP/Updater
  * @author     AcrossWP <contact@acrosswp.com>
  */
-abstract class View_Analytics_Update_Component {
+abstract class AcrossWP_Update_Component {
 
 	/**
 	 * The ID of this plugin.
