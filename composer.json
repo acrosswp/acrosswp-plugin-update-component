@@ -15,7 +15,7 @@
         "issues": "https://github.com/acrosswp/acrosswp-plugin-update-component/issues"
     },
     "require": {
-        "woocommerce/action-scheduler": "dev-trunk"
+        "woocommerce/action-scheduler": "2.*"
     },
     "authors": [
         {
