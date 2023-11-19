@@ -32,15 +32,6 @@ abstract class AcrossWP_Update_Component {
 	public $plugin_name;
 
 	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	public $version;
-
-	/**
 	 * The key to check for the update
 	 *
 	 * @since    1.0.0
@@ -48,6 +39,15 @@ abstract class AcrossWP_Update_Component {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	public $key;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	public $version;
 
 	/**
 	 * The per page 
@@ -65,13 +65,10 @@ abstract class AcrossWP_Update_Component {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version, $key ) {
+	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name		= $plugin_name;
 		$this->version_compare	= $version;
-		$this->key	= $key;
-
-		$this->update();
 	}
 
 	/**
@@ -93,6 +90,13 @@ abstract class AcrossWP_Update_Component {
 	 * Update row value
 	 */
 	abstract public function update_result( $results );
+
+	/**
+	 * Set the key
+	 */
+	public function set_key( $key ) {
+		$this->key = $key;
+	}
 
 	/**
 	 * Run this on every event 
@@ -168,14 +172,14 @@ abstract class AcrossWP_Update_Component {
 	}
 
 	public function update_option( $update_running ) {
-		update_option( $this->$key, $update_running );
+		update_option( $this->key, $update_running );
 	}
 
 	public function get_option() {
-		return get_option( $this->$key, false );
+		return get_option( $this->key, false );
 	}
 
 	public function schedule_actions() {
-		as_schedule_single_action( strtotime( '+1 minutes' ), $this->$key, array(), 'view_analytics', true );
+		$cron_set = as_schedule_single_action( strtotime( '+1 minutes' ), $this->key, array(), 'view_analytics', false );
 	}
 }
